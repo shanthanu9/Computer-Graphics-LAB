@@ -46,9 +46,9 @@ void drawLine(int x1, int y1, int x2, int y2) {
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
 
-    for(int i = 0; i < 8; i++) {
-        drawLine(5, 5+70*i, 495, 5+70*i);
-        drawLine(5+70*i, 5, 5+70*i, 495);
+    for(int i = 0; i < 9; i++) {
+        drawLine(10, 10+60*i, 490, 10+60*i);
+        drawLine(10+60*i, 10, 10+60*i, 490);
     }
 
     glFlush();
