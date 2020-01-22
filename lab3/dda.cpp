@@ -18,18 +18,18 @@ void initGL() {
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
 
-    int dx = x2 - x1;
+        int dx = x2 - x1;
     int dy = y2 - y1;
     float xi, yi;
     int steps;
     if(abs(dx) > abs(dy)) {
         steps = abs(dx);
         xi = 1 * sign(dx);
-        yi = (float)dy/dx * sign(dy);
+        yi = abs((float)dy/dx) * sign(dy);
     }
     else {
         steps = abs(dy);
-        xi = (float)dx/dy * sign(dx);
+        xi = abs((float)dx/dy) * sign(dx);
         yi = 1 * sign(dy);
     }
 
@@ -42,7 +42,7 @@ void display() {
             y += yi;
         }
     glEnd();
-
+    
     glFlush();
 }
 

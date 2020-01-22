@@ -24,11 +24,11 @@ void drawLine(int x1, int y1, int x2, int y2) {
     if(abs(dx) > abs(dy)) {
         steps = abs(dx);
         xi = 1 * sign(dx);
-        yi = (float)dy/dx * sign(dy);
+        yi = abs((float)dy/dx) * sign(dy);
     }
     else {
         steps = abs(dy);
-        xi = (float)dx/dy * sign(dx);
+        xi = abs((float)dx/dy) * sign(dx);
         yi = 1 * sign(dy);
     }
 
