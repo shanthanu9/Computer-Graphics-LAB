@@ -29,10 +29,14 @@ void menu(int n) {
 }
 
 void createMenu() {
-    glutCreateMenu(menu);
+    submenu_id = glutCreateMenu(menu);
     glutAddMenuEntry("Solid Teapot", 1);
     glutAddMenuEntry("Wired Teapot", 2);
-    glutAddMenuEntry("Quit", 0);     
+    
+    glutCreateMenu(menu);
+    glutAddSubMenu("Draw", submenu_id);  
+    glutAddMenuEntry("Quit", 0);   
+    
     glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
 
