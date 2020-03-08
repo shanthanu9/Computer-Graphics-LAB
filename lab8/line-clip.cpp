@@ -69,11 +69,7 @@ void drawLine(float x1, float y1, float x2, float y2, bool color) {
     glEnd();
 }
 
-void display() {
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    drawClippingRegion();
-    
+void drawClippedLine(int x1, int y1, int x2, int y2) {
     int code1 = getRegionCode(x1, y1);
     int code2 = getRegionCode(x2, y2);
 
@@ -149,9 +145,15 @@ void display() {
             }
         }
 
-        drawLine(x1, y1, x2, y2, true);
+        drawClippedLine(x1, y1, x2, y2);
     }
-    
+}
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    drawClippingRegion();
+    drawClippedLine(x1, y1, x2, y2);
 
     glFlush();
 }
