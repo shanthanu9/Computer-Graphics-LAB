@@ -1,3 +1,4 @@
-## Stack demo
+## Stuff done
 
-Simulation of Stack Data structure
+1. Simulation of Stack Data structure
+2. Simulation of Queue Data structure
