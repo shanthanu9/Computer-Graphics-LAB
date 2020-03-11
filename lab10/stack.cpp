@@ -10,6 +10,7 @@
 float stack_text_pos[6];
 int top = -1;
 bool STACK_OVERFLOW = false, STACK_EMPTY = true;
+bool STACK_INSERT = false, STACK_DELETE = false;
 int stack[6];
 
 void initGL() {
@@ -40,22 +41,28 @@ void printText(float x, float y, char text[], bool black=false) {
 void keyboard(unsigned char key, int x, int y) {
     switch(key) {
         case 'i':
+            STACK_EMPTY = false;
+            STACK_OVERFLOW = false;
+            STACK_INSERT = false;
+            STACK_DELETE = false;
             if(top == 5) {
                 STACK_OVERFLOW = true;
             }
             else {
-                STACK_OVERFLOW = false;
-                STACK_EMPTY = false;
+                STACK_INSERT = true;
                 stack[++top] = rand()%10;
             }
             break;
         case 'd':
+            STACK_EMPTY = false;
+            STACK_OVERFLOW = false;
+            STACK_INSERT = false;
+            STACK_DELETE = false;
             if(top == -1) {
                 STACK_EMPTY = true;
             }
             else {
-                STACK_EMPTY = false;
-                STACK_OVERFLOW = false;
+                STACK_DELETE = true;
                 top--;
             }
             break;
@@ -106,6 +113,16 @@ void display() {
     }
     if(STACK_OVERFLOW) {
         printText(0, -50, "STACK OVERFLOW");
+        printText(-120, stack_text_pos[top], "->");
+    }
+    if(STACK_INSERT) {
+        printText(0, -50, "INSERT ELEMENT");
+        printText(-120, stack_text_pos[top], "->");
+    }
+    if(STACK_DELETE) {
+        printText(0, -50, "DELETE ELEMENT");
+        if(top >= 0)
+        printText(-120, stack_text_pos[top], "->");
     }
 
     for(int i = 0; i <= top; i++) {
